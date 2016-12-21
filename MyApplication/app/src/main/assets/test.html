@@ -6,16 +6,24 @@
     function sum(a,b){
     return a+b;
     }
-     function s(){
-    var result =window.android.back();
-    document.getElementById("p").innerHTML=result;
+    function c(cl){
+         document.getElementById("c").innerHTML=cl;
+         return cl;
     }
+    window.set=function(a){
+    document.getElementById("p").innerHTML=a;
+    }
+     function s(){
 
+
+    }
+window.gb.load();
     </script>
 </head>
 <body>
 <button onclick="s()">调用本地方法</button>
 <a href="file:///android_asset/test2.html">点击</a>
 <p id="p"></p>
+<p id="c"></p>
 </body>
 </html>
