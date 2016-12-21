@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
+    public void call(final String js){
+        web.post(new Runnable() {
+            @Override
+            public void run() {
+                web.evaluateJavascript(js, null);
+            }
+        });
+    }
     public class JsInteration {
         Context mContext;
         JsInteration(Context c) {
@@ -38,13 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @JavascriptInterface
         public void load() {
-
-            web.post(new Runnable() {
-                @Override
-                public void run() {
-                    web.evaluateJavascript("set("+data+")", null);
-                }
-            });
+            call("set("+data+")");
         }
     }
 }
