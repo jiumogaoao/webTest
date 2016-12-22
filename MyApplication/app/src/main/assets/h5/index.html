@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/angular-touch.min.js"></script>
 <script type="text/javascript" src="js/iscroll.js"></script>
 <style type="text/css">
+/*页面css直接写，方便angular修改*/
 .topFrame{
     position: absolute;
     top: 0px;
@@ -280,6 +281,7 @@
 }
 </style>
 </head>
+<!--自适应满屏-->
 <body style="height:{{getH}}px;">
 <div id="all" style="height:{{getH/scale}}px;-webkit-transform:scale({{scale}});transform:scale({{scale}});">
   <div id="main">
@@ -350,7 +352,7 @@
 </div>
 <div class="clear"></div>
 <script type="text/javascript">
-/*干掉默认事件*/
+//干掉默认事件
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     var typeSearch,rollFrame;
             angular.module('app', ['ngTouch']).controller('controller', ['$scope', '$window', '$timeout', function($scope, $window, $timeout) {
@@ -366,9 +368,15 @@
     //数据
     $scope.hl = 0;
     $scope.Roll = 0;
+    $scope.history = ["搜索历史0", "搜索历史1", "搜索历史2", "搜索历史3", "搜索历史4"];
+    $scope.open = false;
+    $scope.serchMode = false;
+    $scope.data = [];
+    //方法
     $scope.choose = function(index) {
         $scope.hl = index;
         $scope.open = false;
+        //每次改变给相关iscollrefresh()
         typeSearch.refresh();
         rollFrame.refresh();
     }
@@ -402,11 +410,8 @@
         typeSearch.refresh();
         rollFrame.refresh();
     }
-    $scope.history = ["搜索历史0", "搜索历史1", "搜索历史2", "搜索历史3", "搜索历史4"];
-    $scope.open = false;
-    $scope.serchMode = false;
-    $scope.data = [];
     $scope.go = function(id) {
+       //调用原生方法统一使用callControl("方法名","数据（选填）")
         callControl("go",id + "");
         typeSearch.refresh();
         rollFrame.refresh();
@@ -416,8 +421,11 @@
         typeSearch.refresh();
         rollFrame.refresh();
     }
+    //给原生调用方法需带上window.
+    //原生个js注入数据用
     window.set = function(data) {
         $scope.data = data;
+        //非$scope方法修改数据后需要$scope.$apply();激活
         $scope.$apply();
         typeSearch.refresh();
         rollFrame.refresh();
@@ -427,6 +435,7 @@
         $scope.$apply();
         typeSearch=new IScroll("#typeSearch", { probeType: 3,click:true });
         rollFrame=new IScroll("#rollFrame", { probeType: 3,click:true });
+        //angular准备好后告诉原生
         callControl("load");
     }, 100);
 }
