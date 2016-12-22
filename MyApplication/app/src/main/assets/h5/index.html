@@ -7,6 +7,7 @@
 <title></title>
 <link href="css/main.css" rel="stylesheet" rev="stylesheet" type="text/css">
 <link rel="stylesheet" href="font/iconfont.css">
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/angular-touch.min.js"></script>
 <script type="text/javascript" src="js/iscroll.js"></script>
@@ -406,7 +407,7 @@
     $scope.serchMode = false;
     $scope.data = [];
     $scope.go = function(id) {
-        window.gb.go(id + "");
+        callControl("go",id + "");
         typeSearch.refresh();
         rollFrame.refresh();
     }
@@ -424,9 +425,9 @@
     $timeout(function() {
         $scope.getH = $window.innerHeight;
         $scope.$apply();
-        typeSearch=new IScroll("#typeSearch", { probeType: 3 });
-        rollFrame=new IScroll("#rollFrame", { probeType: 3 });
-        window.gb.load();
+        typeSearch=new IScroll("#typeSearch", { probeType: 3,click:true });
+        rollFrame=new IScroll("#rollFrame", { probeType: 3,click:true });
+        callControl("load");
     }, 100);
 }
 ]);
