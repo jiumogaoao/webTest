@@ -16,6 +16,7 @@ public class checkUpdate {
         pathName=con.getFilesDir().getParent();
         deleteFolder(new File(pathName + "/app_download"));
         deleteFolder(new File(pathName + "/app_h5"));
+
         doDownLoadWork();
     }
     public  void deleteFolder(File file) {
