@@ -29,6 +29,7 @@ public class checkUpdate {
     private Context con;
     private String result;
     private int newVersion;
+    private String path="http://192.168.1.139";
     private final String TAG = "checkUpdate";
     public  void update(Context updateCon){
         con=updateCon;
@@ -54,7 +55,7 @@ public class checkUpdate {
         //ZipExtractorTask task = new ZipExtractorTask("/storage/usb3/system.zip", "/storage/emulated/legacy/", this, true);
         File file=con.getDir("h5", Context.MODE_PRIVATE);
         String zipPath=file.getAbsolutePath();
-        ZipExtractorTask task = new ZipExtractorTask(pathName+"/app_download/3.zip",zipPath, con, true);
+        ZipExtractorTask task = new ZipExtractorTask(pathName+"/app_download/"+newVersion+".zip",zipPath, con, true);
         ((MainActivity)con).upDateEnd();
         task.execute();
     }
@@ -62,7 +63,7 @@ public class checkUpdate {
     private void doDownLoadWork(){
         File file=con.getDir("download", Context.MODE_PRIVATE);
         String filePath=file.getAbsolutePath();
-        DownLoaderTask task = new DownLoaderTask("http://192.168.1.139/down/3.zip", filePath, con);
+        DownLoaderTask task = new DownLoaderTask(path+"/down/"+newVersion+".zip", filePath, con);
         //DownLoaderTask task = new DownLoaderTask("http://192.168.9.155/johnny/test.h264", getCacheDir().getAbsolutePath()+"/", this);
         task.execute();
     }
@@ -71,7 +72,7 @@ public class checkUpdate {
         public void run() {
             HttpURLConnection connection = null;
             try {
-                URL url = new URL("http://192.168.1.139?version=0");
+                URL url = new URL(path+"?version=0");
                 connection = (HttpURLConnection) url.openConnection();
                 // 设置请求方法，默认是GET
                 connection.setRequestMethod("GET");
