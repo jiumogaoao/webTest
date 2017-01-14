@@ -34,8 +34,6 @@ public class checkUpdate {
     public  void update(Context updateCon){
         con=updateCon;
         pathName=con.getFilesDir().getParent();
-        deleteFolder(new File(pathName + "/app_download"));
-        deleteFolder(new File(pathName + "/app_h5"));
         new Thread(getThread).start();
        // doDownLoadWork();
     }
@@ -114,6 +112,8 @@ public class checkUpdate {
                         JSONObject jsonObject2 = new JSONObject(result);
                         newVersion = jsonObject2.getInt("version");
                         if(newVersion!=0){
+                            deleteFolder(new File(pathName + "/app_download"));
+                            deleteFolder(new File(pathName + "/app_h5"));
                             doDownLoadWork();
                         }else{
                             ((MainActivity)con).upDateEnd();
