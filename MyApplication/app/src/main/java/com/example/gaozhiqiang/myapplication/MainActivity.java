@@ -10,6 +10,8 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     //放webview
@@ -68,4 +70,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,Main2Activity.class));
         }
     }
+
+
 }
