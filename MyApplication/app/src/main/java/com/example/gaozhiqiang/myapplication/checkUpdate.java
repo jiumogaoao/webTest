@@ -9,8 +9,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,11 +33,46 @@ public class checkUpdate {
     private Context con;
     private String result;
     private int newVersion;
-    private String path="http://192.168.1.139";
+    private String path="http://192.168.1.102";
     private final String TAG = "checkUpdate";
-    public  void update(Context updateCon){
+    private String localVersion;
+    private String versionFileName;
+    private File versionFile;
+    public  void update(Context updateCon) throws IOException {
         con=updateCon;
         pathName=con.getFilesDir().getParent();
+
+        versionFileName = con.getFilesDir().getAbsolutePath() + "/h5Version";
+        versionFile = new File(versionFileName);
+        if (!versionFile.exists()) {
+            try {
+                //在指定的文件夹中创建文件
+                versionFile.createNewFile();
+                localVersion = "0";
+                FileWriter fw = new FileWriter(versionFileName, true);//
+                // 创建FileWriter对象，用来写入字符流
+                BufferedWriter bw = new BufferedWriter(fw); // 将缓冲对文件的输出
+                bw.write(localVersion);
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+            }
+        }else{
+            FileInputStream in = null;
+            ByteArrayOutputStream bout = null;
+            byte[]buf = new byte[1024];
+            bout = new ByteArrayOutputStream();
+            int length = 0;
+            in = new FileInputStream(versionFileName); //获得输入流
+            while((length=in.read(buf))!=-1){
+                bout.write(buf,0,length);
+            }
+            byte[] versionContent = bout.toByteArray();
+            localVersion = new String(versionContent,"UTF-8");
+            Log.d(TAG, "localVersion: "+localVersion);
+            in.close();
+            bout.close();
+        }
         new Thread(getThread).start();
        // doDownLoadWork();
     }
@@ -70,7 +109,7 @@ public class checkUpdate {
         public void run() {
             HttpURLConnection connection = null;
             try {
-                URL url = new URL(path+"?version=0");
+                URL url = new URL(path+"?version="+localVersion);
                 connection = (HttpURLConnection) url.openConnection();
                 // 设置请求方法，默认是GET
                 connection.setRequestMethod("GET");
@@ -112,6 +151,14 @@ public class checkUpdate {
                         JSONObject jsonObject2 = new JSONObject(result);
                         newVersion = jsonObject2.getInt("version");
                         if(newVersion!=0){
+                            versionFile.delete();
+                            versionFile = new File(versionFileName);
+                            FileWriter fw = new FileWriter(versionFileName, true);//
+                            // 创建FileWriter对象，用来写入字符流
+                            BufferedWriter bw = new BufferedWriter(fw); // 将缓冲对文件的输出
+                            bw.write(String.valueOf(newVersion));
+                            bw.close();
+                            fw.close();
                             deleteFolder(new File(pathName + "/app_download"));
                             deleteFolder(new File(pathName + "/app_h5"));
                             doDownLoadWork();
@@ -119,6 +166,8 @@ public class checkUpdate {
                             ((MainActivity)con).upDateEnd();
                         }
                     } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
