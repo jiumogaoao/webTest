@@ -33,12 +33,13 @@ public class checkUpdate {
     private Context con;
     private String result;
     private int newVersion;
-    private String path="http://192.168.1.102";
+    private String path="http://192.168.1.139";
     private final String TAG = "checkUpdate";
     private String localVersion;
     private String versionFileName;
     private File versionFile;
-    public  void update(Context updateCon) throws IOException {
+
+    public  checkUpdate(Context updateCon) throws IOException {
         con=updateCon;
         pathName=con.getFilesDir().getParent();
 
