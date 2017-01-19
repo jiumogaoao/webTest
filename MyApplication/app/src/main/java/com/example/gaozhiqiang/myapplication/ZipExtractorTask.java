@@ -55,7 +55,6 @@ public class ZipExtractorTask extends AsyncTask<Void, Integer, Long> {
     @Override
     protected void onPostExecute(Long result) {
         // TODO Auto-generated method stub
-        //super.onPostExecute(result);
         if(mDialog!=null&&mDialog.isShowing()){
             mDialog.dismiss();
         }
@@ -65,7 +64,6 @@ public class ZipExtractorTask extends AsyncTask<Void, Integer, Long> {
     @Override
     protected void onPreExecute() {
         // TODO Auto-generated method stub
-        //super.onPreExecute();
         if(mDialog!=null){
             mDialog.setTitle("Extracting");
             mDialog.setMessage(mInput.getName());
@@ -84,7 +82,6 @@ public class ZipExtractorTask extends AsyncTask<Void, Integer, Long> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         // TODO Auto-generated method stub
-        //super.onProgressUpdate(values);
         if(mDialog==null)
             return;
         if(values.length>1){

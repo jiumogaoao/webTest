@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -27,8 +29,12 @@ public class DownLoaderTask extends AsyncTask<Void, Integer, Long> {
     private int mProgress = 0;
     private ProgressReportingOutputStream mOutputStream;
     private Context mContext;
-    public DownLoaderTask(String url,String out,Context context){
+    private Object inCon;
+    private Class inClass;
+    public DownLoaderTask(String url,String out,Context context,Object in) throws ClassNotFoundException {
         super();
+        inCon = in;
+        inClass = inCon.getClass();
         if(context!=null){
             mDialog = new ProgressDialog(context);
             mContext = context;
@@ -104,7 +110,16 @@ public class DownLoaderTask extends AsyncTask<Void, Integer, Long> {
         }
         if(isCancelled())
             return;
-        ((MainActivity)mContext).upDate.doZipExtractorWork();
+        try {
+            Method method =  inClass.getMethod("doZipExtractorWork");
+            method.invoke(inCon);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private long download(){

@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
             upDate=new checkUpdate(this);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
         pathName=this.getFilesDir().getParent();
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //通过id找到webview
         web = (WebView) findViewById(R.id.web);
         try {
-            h5Controller = new h5(this,web,"com.example.gaozhiqiang.myapplication.MainActivity");
+            h5Controller = new h5(this,web);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {

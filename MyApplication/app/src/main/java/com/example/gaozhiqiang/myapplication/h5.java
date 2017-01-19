@@ -19,19 +19,17 @@ import static android.content.ContentValues.TAG;
 public class h5 {
     private Context mContext;
     private WebView wv;
-    private String className;
     private Class r;
-    public h5(Context ct,WebView wb,String cn) throws ClassNotFoundException, NoSuchMethodException {
+    public h5(Context ct,WebView wb) throws ClassNotFoundException, NoSuchMethodException {
         mContext = ct;
         wv=wb;
-        className=cn;
         //获取设置
         WebSettings webSettings = wv.getSettings();
         //允许使用js
         webSettings.setJavaScriptEnabled(true);
         //给js注入包，名字统一使用ZTX
         wv.addJavascriptInterface(new JsInteration(ct), "ZTX");
-        r=Class.forName(className);
+        r=ct.getClass();
     };
 
     //安卓调用js

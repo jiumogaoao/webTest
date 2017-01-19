@@ -18,6 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -38,9 +40,11 @@ public class checkUpdate {
     private String localVersion;
     private String versionFileName;
     private File versionFile;
+    private Class inClass;
 
-    public  checkUpdate(Context updateCon) throws IOException {
+    public  checkUpdate(Context updateCon) throws IOException, ClassNotFoundException {
         con=updateCon;
+        inClass=updateCon.getClass();
         pathName=con.getFilesDir().getParent();
 
         versionFileName = con.getFilesDir().getAbsolutePath() + "/h5Version";
@@ -75,7 +79,6 @@ public class checkUpdate {
             bout.close();
         }
         new Thread(getThread).start();
-       // doDownLoadWork();
     }
     public  void deleteFolder(File file) {
         if (!file.exists())
@@ -89,20 +92,27 @@ public class checkUpdate {
         }
         file.delete();
     }
-    public void doZipExtractorWork(){
-        //ZipExtractorTask task = new ZipExtractorTask("/storage/usb3/system.zip", "/storage/emulated/legacy/", this, true);
+    public void doZipExtractorWork() throws NoSuchMethodException {
         File file=con.getDir("h5", Context.MODE_PRIVATE);
         String zipPath=file.getAbsolutePath();
         ZipExtractorTask task = new ZipExtractorTask(pathName+"/app_download/"+newVersion+".zip",zipPath, con, true);
-        ((MainActivity)con).upDateEnd();
+
+        Method method =  inClass.getMethod("upDateEnd");
+        try {
+            method.invoke(con);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
         task.execute();
     }
 
-    private void doDownLoadWork(){
+    private void doDownLoadWork() throws ClassNotFoundException {
         File file=con.getDir("download", Context.MODE_PRIVATE);
         String filePath=file.getAbsolutePath();
-        DownLoaderTask task = new DownLoaderTask(path+"/down/"+newVersion+".zip", filePath, con);
-        //DownLoaderTask task = new DownLoaderTask("http://192.168.9.155/johnny/test.h264", getCacheDir().getAbsolutePath()+"/", this);
+        DownLoaderTask task = new DownLoaderTask(path+"/down/"+newVersion+".zip", filePath, con,this);
         task.execute();
     }
 
@@ -164,11 +174,22 @@ public class checkUpdate {
                             deleteFolder(new File(pathName + "/app_h5"));
                             doDownLoadWork();
                         }else{
-                            ((MainActivity)con).upDateEnd();
+                            Method method =  inClass.getMethod("upDateEnd");
+                            try {
+                                method.invoke(con);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
