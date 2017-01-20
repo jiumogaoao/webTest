@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_config.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_config.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_table.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\test_table.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_blog.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_blog.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_layout.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\main_layout.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_face.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_face.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_frame.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\test_frame.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tpl_list_info.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\tpl_list_info.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\demo_web.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\demo_web.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tpl_list_blog.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\tpl_list_blog.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_edit.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_edit.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_top.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\main_top.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_blogs.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_blogs.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_dialog.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\main_dialog.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_test.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_test.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tpl_list_config.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\tpl_list_config.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_login.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_login.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tpl_list_menu.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\tpl_list_menu.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_tab.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\main_tab.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_index.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_index.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tpl_list_blogs.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\tpl_list_blogs.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_mytip.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_mytip.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ui_write.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\ui_write.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_load.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\main_load.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tpl_list_comment.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\tpl_list_comment.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\demo_map.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\demo_map.xml"
+    },
+    {
+        "merged": "F:\\webTest\\client1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_merge.xml",
+        "source": "F:\\webTest\\client1\\app\\src\\main\\res\\layout\\test_merge.xml"
+    }
+]
