@@ -35,7 +35,7 @@ public class checkUpdate {
     private Context con;
     private String result;
     private int newVersion;
-    private String path="http://192.168.1.139";
+    private String path="http://192.168.1.102";
     private final String TAG = "checkUpdate";
     private String localVersion;
     private String versionFileName;
