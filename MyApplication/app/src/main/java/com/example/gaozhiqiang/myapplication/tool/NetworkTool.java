@@ -53,7 +53,9 @@ public class NetworkTool {
                     if(connection.getResponseCode() == 200){
                         InputStream is = connection.getInputStream();
                         String result = convertStreamToString(is);
+
                         final JSONObject resultJSON = new JSONObject(result);
+
                         callHandler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -246,7 +248,7 @@ public class NetworkTool {
     }
 
     /* 上传文件至Server的方法 */
-    private void uploadFile(final String newName, final String uploadFile, final String actionUrl, final Object conObject, final String callback)
+    public static void uploadFile(final String newName, final String uploadFile, final String actionUrl, final Object conObject, final String callback)
     {
         new Thread() {
             public void run() {
