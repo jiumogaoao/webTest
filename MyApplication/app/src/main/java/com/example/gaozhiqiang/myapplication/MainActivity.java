@@ -8,6 +8,7 @@ import android.webkit.WebView;
 
 import com.example.gaozhiqiang.myapplication.tool.FileTool;
 import com.example.gaozhiqiang.myapplication.tool.NetworkTool;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.json.JSONObject;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         //加载所需页面file:///android_asset/为asset文件夹
         Log.d(TAG, "upDateEnd: upDateEnd");
         web.loadUrl("file://"+pathName+"/app_h5/index.html");
+        //scan();
     }
     //js准备完成是调用
     public void load(String pid) {
@@ -61,6 +63,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this,Main2Activity.class));
     }
 
+    public void scan(){
+        startActivityForResult(new Intent(MainActivity.this, CaptureActivity.class),0);
+    }
 
-
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(resultCode == RESULT_OK){
+            Bundle bundle = data.getExtras();
+            String result = bundle.getString("result");
+            Log.d(TAG, "onActivityResult: "+result);
+        }
+    }
 }
